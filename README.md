@@ -1,98 +1,117 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI Signal</title>
+<title>AI Betting Signal</title>
+
 <style>
     body {
         margin: 0;
-        background: radial-gradient(circle at top, #1e293b, #020617);
+        background: linear-gradient(135deg, #020617, #0f172a, #020617);
         color: white;
         font-family: Arial, sans-serif;
         text-align: center;
         padding-top: 60px;
+        overflow-x: hidden;
     }
 
     h1 {
-        font-size: 32px;
+        font-size: 34px;
+        background: linear-gradient(45deg, #22c55e, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
-        opacity: 0.7;
+        opacity: 0.8;
         font-size: 15px;
+    }
+
+    .users {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #4ade80;
+        animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+        from { text-shadow: 0 0 5px #22c55e; }
+        to { text-shadow: 0 0 15px #4ade80; }
     }
 
     .card {
         margin: 40px auto;
         padding: 30px;
-        width: 300px;
+        width: 320px;
         border-radius: 20px;
         background: rgba(255,255,255,0.05);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 0 30px rgba(0,255,150,0.2);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 0 40px rgba(34,197,94,0.3);
+        animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .btn {
-        padding: 18px 40px;
+        padding: 18px 45px;
         font-size: 20px;
         border: none;
-        border-radius: 12px;
+        border-radius: 14px;
         cursor: pointer;
-        background: linear-gradient(45deg, #22c55e, #4ade80);
+        background: linear-gradient(45deg, #22c55e, #4ade80, #38bdf8);
         color: white;
         margin-top: 20px;
-        animation: pulse 2s infinite;
+        animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
-        0% { box-shadow: 0 0 0px rgba(34,197,94,0.7); }
-        50% { box-shadow: 0 0 25px rgba(34,197,94,1); }
-        100% { box-shadow: 0 0 0px rgba(34,197,94,0.7); }
+        0% { box-shadow: 0 0 5px #22c55e; }
+        50% { box-shadow: 0 0 30px #38bdf8; }
+        100% { box-shadow: 0 0 5px #22c55e; }
     }
 
     .status {
         margin-top: 20px;
         font-size: 18px;
-        opacity: 0.85;
+        opacity: 0.9;
+        min-height: 24px;
     }
 
     .signal {
         margin-top: 30px;
-        font-size: 34px;
+        font-size: 38px;
         font-weight: bold;
+        letter-spacing: 1px;
     }
 
     .emoji {
-        font-size: 50px;
+        font-size: 55px;
         margin-top: 15px;
         animation: float 2s infinite ease-in-out;
     }
 
     @keyframes float {
         0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-12px); }
         100% { transform: translateY(0px); }
     }
 
     .history {
         margin-top: 25px;
         font-size: 14px;
-        opacity: 0.6;
-    }
-
-    .users {
-        margin-top: 10px;
-        font-size: 14px;
-        color: #4ade80;
+        opacity: 0.65;
     }
 
 </style>
 </head>
+
 <body>
 
 <h1>🎯 AI Betting Signal</h1>
-<div class="subtitle">Real-time pattern analysis</div>
-<div class="users">✔ 12,842 players online</div>
+<div class="subtitle">Smart round analysis system</div>
+<div class="users">✔ 13,204 players online</div>
 
 <div class="card">
 
@@ -110,16 +129,16 @@ let history = [];
 
 function generateSignal() {
     document.getElementById("signal").innerText = "--";
-    document.getElementById("status").innerText = "Analyzing betting activity...";
+    document.getElementById("status").innerText = "Analyzing player bets...";
     document.getElementById("emoji").innerText = "🔍";
 
     setTimeout(() => {
-        document.getElementById("status").innerText = "Checking recent rounds...";
+        document.getElementById("status").innerText = "Tracking recent rounds...";
         document.getElementById("emoji").innerText = "📊";
-    }, 800);
+    }, 700);
 
     setTimeout(() => {
-        document.getElementById("status").innerText = "Calculating optimal entry...";
+        document.getElementById("status").innerText = "Calculating best timing...";
         document.getElementById("emoji").innerText = "🤖";
     }, 1400);
 
@@ -145,7 +164,7 @@ function generateSignal() {
         document.getElementById("emoji").innerText = emoji;
 
         history.unshift(multiplier + "x");
-        history = history.slice(0, 5);
+        history = history.slice(0, 6);
 
         document.getElementById("history").innerText =
             "Recent signals: " + history.join(" • ");
